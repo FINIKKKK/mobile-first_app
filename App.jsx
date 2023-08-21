@@ -1,7 +1,8 @@
-import {View} from 'react-native';
+import {StatusBar} from 'react-native';
 import React from 'react';
 import Post from './components/Post';
 import axios from 'axios';
+import styled from "styled-components/native";
 
 
 export default function App() {
@@ -13,10 +14,17 @@ export default function App() {
     })
 
     return (
-        <View>
-            {posts.map((post) => (
-                <Post title={post.title} body={post.content} img={post.picture}/>
-            ))}
-        </View>
+        <>
+            <StatusBar theme='auto'/>
+            <Posts>
+                {posts.map((post) => (
+                    <Post key={post.id} title={post.title} body={post.content} img={post.picture}/>
+                ))}
+            </Posts>
+        </>
     );
 }
+
+const Posts = styled.ScrollView`
+  padding: 10px;
+`

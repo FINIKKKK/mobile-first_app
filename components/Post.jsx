@@ -1,38 +1,23 @@
-import { StyleSheet, Text, View } from 'react-native';
-import styled from 'styled-components/native';
+import ss from './Post.module.scss'
+import {View, Text, Image} from 'react-native'
+import {StyleSheet} from "react-native-web";
+import EStyleSheet from 'react-native-extended-stylesheet';
 
-const PostView = styled.View``;
-const PostImage = styled.Image`
-    width: 100px;
-    height: 100px;
-`;
-const PostDetails = styled.View``;
-const PostTitle = styled.Text`
 
-`;
-
-const PostBody = styled.Text`
-
-`;
+const styles = EStyleSheet.create({
+    post: {
+        marginBottom: 20,
+    },
+})
 
 export default function Post({img, title, body}) {
-  return (
-
-      <PostView>
-        <PostImage source={{uri: img}}/>
-        <PostDetails>
-<PostTitle>{title}</PostTitle>
-<PostBody>{body}</PostBody>
-        </PostDetails>
-      </PostView>
-  );
+    return (
+        <View style={[ss.post, styles.post]}>
+            <Image style={ss.img} source={{uri: img}}/>
+            <View style={ss.info}>
+                <Text style={ss.title}>{title}</Text>
+                <Text style={ss.body} numberOfLines={3}>{body}</Text>
+            </View>
+        </View>
+    );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
