@@ -4,6 +4,7 @@ import {Home} from "../screens/Home";
 import {Post} from "../screens/Post";
 import {NavigationContainer} from "@react-navigation/native";
 
+
 const Stack = createNativeStackNavigator();
 
 export const Navigation = () => {

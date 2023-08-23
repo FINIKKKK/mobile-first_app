@@ -1,8 +1,14 @@
 import React from 'react';
 import Post from '../components/Post';
 import axios from 'axios';
-import styled from "styled-components/native";
-import {FlatList, TouchableOpacity, RefreshControl, StatusBar} from "react-native";
+import {FlatList, TouchableOpacity, RefreshControl, StatusBar, Text} from "react-native";
+import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
+import {
+    faEye,
+    faSearch,
+    faBars,
+    faSmile,
+} from "@fortawesome/free-solid-svg-icons";
 
 
 export const Home = ({navigation}) => {
@@ -18,14 +24,20 @@ export const Home = ({navigation}) => {
     React.useEffect(() => onFetchPosts())
 
     return (
-        <FlatList
-            style={{padding: 15}}
-            refreshing={<RefreshControl refreshing={isLoading} onRefresh={onFetchPosts}/>}
-            data={posts}
-            renderItem={({item}) => (
-                <TouchableOpacity onPress={() => navigation.navigate('post', {id: item.id, title: item.title})}>
-                    <Post title={item.title} body={item.content} img={item.picture}/>
-                </TouchableOpacity>)}
-        />
+        <>
+            <Text>fgfgf</Text>
+            <FontAwesomeIcon icon={faEye} size={50} style={{ color: "red" }} />
+            <FontAwesomeIcon icon={faSearch} size={50} style={{ color: "blue" }} />
+            <FontAwesomeIcon icon={faBars} size={50} style={{ color: "black" }} />
+            <FontAwesomeIcon icon={faSmile} size={50} style={{ color: "yellow" }} />
+            <FlatList
+                refreshing={<RefreshControl refreshing={isLoading} onRefresh={onFetchPosts}/>}
+                data={posts}
+                renderItem={({item}) => (
+                    <TouchableOpacity onPress={() => navigation.navigate('post', {id: item.id, title: item.title})}>
+                        <Post title={item.title} body={item.content} img={item.picture}/>
+                    </TouchableOpacity>)}
+            />
+        </>
     );
 }
